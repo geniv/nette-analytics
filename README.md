@@ -38,3 +38,31 @@ neon configure extension:
 extensions:
     analytics: Analytics\Bridges\Nette\Extension
 ```
+
+base presenters:
+```php
+use Analytics\GoogleGa;
+
+protected function createComponentGa(GoogleGa $googleGa)
+{
+    return $googleGa;
+}
+
+use Analytics\GoogleTagManager;
+
+protected function createComponentGtm(GoogleTagManager $googleTagManager)
+{
+    return $googleTagManager;
+}
+```
+
+usage:
+```latte
+{control ga}
+
+{*high in the <head>*}
+{control gtm:head}
+
+{*after the opening <body> tag*}
+{control gtm:body}
+```
