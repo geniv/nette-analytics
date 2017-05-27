@@ -1,7 +1,25 @@
-# nette-analytics
 Google analytics
+================
 
+Installation
+------------
+```sh
+$ composer require geniv/nette-analytics
+```
+or
+```json
+"geniv/nette-analytics": ">=1.0"
+```
 
+internal dependency:
+```json
+"nette/nette": ">=2.4.0"
+```
+
+Include in application
+----------------------
+neon configure:
+```neon
 # google analytics
 analytics:
     parameters:
@@ -13,8 +31,10 @@ analytics:
         gtm: 'GTM-XXXXXXX'
 #       gtm:
 #           cs: 'GTM-XXXXXXX'
+```
 
-
+neon configure extension:
+```neon
 extensions:
-	analytics: Analytics\Bridges\Nette\Extension
-
+    analytics: Analytics\Bridges\Nette\Extension
+```
