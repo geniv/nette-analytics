@@ -46,4 +46,12 @@ abstract class GoogleAnalytics extends Control
             }
         }
     }
+
+
+    /**
+     * Main render.
+     *
+     * @return mixed
+     */
+    abstract public function render();
 }

@@ -61,7 +61,7 @@ usage:
 {control ga}
 
 {*high in the <head>*}
-{control gtm:head}
+{control gtm}
 
 {*after the opening <body> tag*}
 {control gtm:body}
