@@ -4,7 +4,6 @@ namespace Analytics\Bridges\Nette;
 
 use Analytics\GoogleGa;
 use Analytics\GoogleTagManager;
-use Exception;
 use Nette\DI\CompilerExtension;
 
 
@@ -18,6 +17,14 @@ use Nette\DI\CompilerExtension;
  */
 class Extension extends CompilerExtension
 {
+    /** @var array vychozi hodnoty */
+    private $defaults = [
+        'ga'             => 'UA-XXXXX-Y',
+        'gtm'            => 'GTM-XXXXXXX',
+        'productionMode' => false,
+        'async'          => false,
+    ];
+
 
     /**
      * Load configuration.
@@ -25,23 +32,18 @@ class Extension extends CompilerExtension
     public function loadConfiguration()
     {
         $builder = $this->getContainerBuilder();
-        $config = $this->getConfig();
-
-        if (!isset($config['parameters'])) {
-            throw new Exception('Parameters is not defined! (' . $this->name . ':{parameters: {...}})');
-        }
+        $config = $this->validateConfig($this->defaults);
 
         // vlozeni detekce produkcniho modu, pokud neni definovano
-        if (!isset($config['parameters']['productionMode'])) {
-            $config['parameters']['productionMode'] = $builder->parameters['productionMode'];
+        if (!isset($config['productionMode'])) {
+            $config['productionMode'] = $builder->parameters['productionMode'];
         }
 
+        // definice komponent
         $builder->addDefinition($this->prefix('ga'))
-            ->setClass(GoogleGa::class, [$config['parameters']])
-            ->setInject(false);
+            ->setClass(GoogleGa::class, [$config]);
 
         $builder->addDefinition($this->prefix('gtm'))
-            ->setClass(GoogleTagManager::class, [$config['parameters']])
-            ->setInject(false);
+            ->setClass(GoogleTagManager::class, [$config]);
     }
 }
