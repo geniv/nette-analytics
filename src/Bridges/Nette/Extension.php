@@ -36,12 +36,11 @@ class Extension extends CompilerExtension
             $config['parameters']['productionMode'] = $builder->parameters['productionMode'];
         }
 
+        // definice komponent
         $builder->addDefinition($this->prefix('ga'))
-            ->setClass(GoogleGa::class, [$config['parameters']])
-            ->setInject(false);
+            ->setClass(GoogleGa::class, [$config['parameters']]);
 
         $builder->addDefinition($this->prefix('gtm'))
-            ->setClass(GoogleTagManager::class, [$config['parameters']])
-            ->setInject(false);
+            ->setClass(GoogleTagManager::class, [$config['parameters']]);
     }
 }
