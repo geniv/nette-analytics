@@ -22,15 +22,14 @@ neon configure:
 ```neon
 # google analytics
 analytics:
-    parameters:
-#        productionMode: true
-#        async: true
-        ga: 'UA-XXXXX-Y'
-#       ga:
-#           cs: 'UA-XXXXX-Y'
-        gtm: 'GTM-XXXXXXX'
-#       gtm:
-#           cs: 'GTM-XXXXXXX'
+#   productionMode: true
+#   async: true
+    ga: 'UA-XXXXX-Y'
+#   ga:
+#       cs: 'UA-XXXXX-Y'
+    gtm: 'GTM-XXXXXXX'
+#   gtm:
+#       cs: 'GTM-XXXXXXX'
 ```
 
 neon configure extension:
