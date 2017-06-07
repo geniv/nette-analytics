@@ -23,6 +23,8 @@ abstract class GoogleAnalytics extends Control
      */
     public function __construct(array $parameters)
     {
+        parent::__construct();
+
         $this->parameters = $parameters;
     }
 
