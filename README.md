@@ -1,5 +1,6 @@
 Google analytics
 ================
+Google analytics & Google Tag Manager component
 
 Installation
 ------------
@@ -45,6 +46,7 @@ use Analytics\GoogleGa;
 
 protected function createComponentGa(GoogleGa $googleGa)
 {
+    //return $googleGa->setLocaleCode($this->locale);
     return $googleGa;
 }
 
@@ -52,12 +54,14 @@ use Analytics\GoogleTagManager;
 
 protected function createComponentGtm(GoogleTagManager $googleTagManager)
 {
+    //return $googleTagManager->setLocaleCode($this->locale);
     return $googleTagManager;
 }
 ```
 
 usage:
 ```latte
+{*high in the <head>*}
 {control ga}
 
 {*high in the <head>*}
