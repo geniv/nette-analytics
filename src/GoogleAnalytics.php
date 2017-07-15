@@ -33,6 +33,7 @@ abstract class GoogleAnalytics extends Control
      * Set locale code for switch ga/gtm code.
      *
      * @param $code
+     * @return $this
      */
     public function setLocaleCode($code)
     {
@@ -47,6 +48,7 @@ abstract class GoogleAnalytics extends Control
                 $this->parameters['gtm'] = $this->parameters['gtm'][$code];
             }
         }
+        return $this;
     }
 
 

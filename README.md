@@ -1,5 +1,6 @@
 Google analytics
 ================
+Google analytics & Google Tag Manager component
 
 Installation
 ------------
@@ -8,11 +9,12 @@ $ composer require geniv/nette-analytics
 ```
 or
 ```json
-"geniv/nette-analytics": ">=1.0"
+"geniv/nette-analytics": ">=1.0.0"
 ```
 
-internal dependency:
+require:
 ```json
+"php": ">=5.6.0",
 "nette/nette": ">=2.4.0"
 ```
 
@@ -44,6 +46,7 @@ use Analytics\GoogleGa;
 
 protected function createComponentGa(GoogleGa $googleGa)
 {
+    //return $googleGa->setLocaleCode($this->locale);
     return $googleGa;
 }
 
@@ -51,12 +54,14 @@ use Analytics\GoogleTagManager;
 
 protected function createComponentGtm(GoogleTagManager $googleTagManager)
 {
+    //return $googleTagManager->setLocaleCode($this->locale);
     return $googleTagManager;
 }
 ```
 
 usage:
 ```latte
+{*high in the <head>*}
 {control ga}
 
 {*high in the <head>*}

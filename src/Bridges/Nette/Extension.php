@@ -10,8 +10,6 @@ use Nette\DI\CompilerExtension;
 /**
  * Class Extension
  *
- * nette extension pro GA a GTM jako rozsireni
- *
  * @author  geniv
  * @package Analytics\Bridges\Nette
  */

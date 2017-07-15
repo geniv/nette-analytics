@@ -5,6 +5,7 @@
     "nette",
     "google",
     "analytics",
+    "gtm",
     "geniv"
   ],
   "license": "GPL-3.0",
