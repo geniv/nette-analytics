@@ -39,10 +39,10 @@ class Extension extends CompilerExtension
 
         // define ga
         $builder->addDefinition($this->prefix('ga'))
-            ->setClass(GoogleGa::class, [$config]);
+            ->setFactory(GoogleGa::class, [$config]);
 
         // define gtm
         $builder->addDefinition($this->prefix('gtm'))
-            ->setClass(GoogleTagManager::class, [$config]);
+            ->setFactory(GoogleTagManager::class, [$config]);
     }
 }
