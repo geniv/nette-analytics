@@ -13,7 +13,7 @@ or
 
 require:
 ```json
-"php": ">=5.6.0",
+"php": ">=7.0.0",
 "nette/nette": ">=2.4.0"
 ```
 
@@ -76,17 +76,26 @@ protected function createComponentMatomo(Matomo $matomo)
 }
 ```
 
-usage:
+usage GA:
 ```latte
 {*high in the <head>*}
 {control ga}
+```
 
+usage GTM:
+```latte
 {*high in the <head>*}
 {control gtm}
 
 {*after the opening <body> tag*}
 {control gtm:body}
+```
 
+usage Matomo:
+```latte
 {*high in the <head>*}
 {control matomo}
+
+{*after the opening <body> tag*}
+{control matomo:body}
 ```

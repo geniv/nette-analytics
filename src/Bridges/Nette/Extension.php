@@ -1,9 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Analytics\Bridges\Nette;
 
 use Analytics\GoogleGa;
 use Analytics\GoogleTagManager;
+use Analytics\Matomo;
 use Nette\DI\CompilerExtension;
 
 
@@ -19,8 +20,9 @@ class Extension extends CompilerExtension
     private $defaults = [
         'productionMode' => null,   // default null => automatic mode
         'async'          => false,
-        'ga'             => 'UA-XXXXX-Y',
-        'gtm'            => 'GTM-XXXXXXX',
+        'ga'             => null,
+        'gtm'            => null,
+        'matomo'         => null,
     ];
 
 
@@ -37,12 +39,19 @@ class Extension extends CompilerExtension
             $config['productionMode'] = $builder->parameters['productionMode'];
         }
 
-        // define ga
-        $builder->addDefinition($this->prefix('ga'))
-            ->setFactory(GoogleGa::class, [$config]);
+        if ($config['ga']) {
+            $builder->addDefinition($this->prefix('ga'))
+                ->setFactory(GoogleGa::class, [$config]);
+        }
 
-        // define gtm
-        $builder->addDefinition($this->prefix('gtm'))
-            ->setFactory(GoogleTagManager::class, [$config]);
+        if ($config['gtm']) {
+            $builder->addDefinition($this->prefix('gtm'))
+                ->setFactory(GoogleTagManager::class, [$config]);
+        }
+
+        if ($config['matomo']) {
+            $builder->addDefinition($this->prefix('matomo'))
+                ->setFactory(Matomo::class, [$config]);
+        }
     }
 }
