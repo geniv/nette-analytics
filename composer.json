@@ -1,11 +1,13 @@
 {
   "name": "geniv/nette-analytics",
-  "description": "Google analytics extension for Nette Framework",
+  "description": "Analytics extension for Nette Framework",
   "keywords": [
     "nette",
     "google",
     "analytics",
+    "ga",
     "gtm",
+    "matomo",
     "geniv"
   ],
   "license": "MIT",
@@ -16,7 +18,7 @@
     }
   ],
   "require": {
-    "php": ">=5.6.0",
+    "php": ">=7.0.0",
     "nette/nette": ">=2.4.0"
   },
   "autoload": {
