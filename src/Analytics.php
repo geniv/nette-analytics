@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Analytics;
 
@@ -13,6 +13,7 @@ use Nette\Application\UI\Control;
  */
 abstract class Analytics extends Control
 {
+    /** @var array */
     protected $parameters;
 
 
@@ -30,32 +31,23 @@ abstract class Analytics extends Control
 
 
     /**
-     * Set locale code for switch ga/gtm code.
+     * Set locale code.
      *
-     * @param $code
-     * @return $this
+     * @param string $code
      */
-    public function setLocaleCode($code)
+    public function setLocaleCode(string $code)
     {
         if ($code) {
-            // prepsani kodu ga podle lokalizace
-            if (isset($this->parameters['ga']) && is_array($this->parameters['ga']) && isset($this->parameters['ga'][$code])) {
-                $this->parameters['ga'] = $this->parameters['ga'][$code];
-            }
-
-            // prepsani kodu gtm podle lokalizace
-            if (isset($this->parameters['gtm']) && is_array($this->parameters['gtm']) && isset($this->parameters['gtm'][$code])) {
-                $this->parameters['gtm'] = $this->parameters['gtm'][$code];
+            // rewrite code by locale code
+            if (isset($this->parameters[static::INDEX]) && is_array($this->parameters[static::INDEX]) && isset($this->parameters[static::INDEX][$code])) {
+                $this->parameters[static::INDEX] = $this->parameters[static::INDEX][$code];
             }
         }
-        return $this;
     }
 
 
     /**
-     * Main render.
-     *
-     * @return mixed
+     * Render.
      */
     abstract public function render();
 }

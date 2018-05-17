@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Analytics;
 
@@ -11,16 +11,8 @@ namespace Analytics;
  */
 class Matomo extends Analytics
 {
-
-    /**
-     * GoogleGa constructor.
-     *
-     * @param array $parameters
-     */
-    public function __construct(array $parameters)
-    {
-        parent::__construct($parameters);
-    }
+    const
+        INDEX = 'matomo';
 
 
     /**
@@ -28,7 +20,7 @@ class Matomo extends Analytics
      */
     public function render()
     {
-        if (isset($this->parameters['gtm']) && $this->parameters['productionMode']) {
+        if (isset($this->parameters[self::INDEX]) && $this->parameters['productionMode']) {
             echo <<<MATOMO
         <!-- Matomo -->
         <script type="text/javascript">
@@ -36,9 +28,9 @@ class Matomo extends Analytics
           _paq.push(['trackPageView']);
           _paq.push(['enableLinkTracking']);
           (function() {
-            var u="//web-analytics.iprpraha.cz/";
+            var u="//{$this->parameters[self::INDEX]['url']}/";
             _paq.push(['setTrackerUrl', u+'piwik.php']);
-            _paq.push(['setSiteId', '46']);
+            _paq.push(['setSiteId', {$this->parameters[self::INDEX]['siteId']}]);
             var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
             g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
           })();
@@ -56,10 +48,10 @@ MATOMO;
      */
     public function renderBody()
     {
-        if (isset($this->parameters['gtm']) && $this->parameters['productionMode']) {
+        if (isset($this->parameters[self::INDEX]) && $this->parameters['productionMode']) {
             echo <<<MATOMO
         <!-- Matomo (noscript) -->
-        <noscript><p><img src="//web-analytics.iprpraha.cz/piwik.php?idsite=46&rec=1" style="border:0;" alt="" /></p></noscript>
+        <noscript><p><img src="//{$this->parameters[self::INDEX]['url']}/piwik.php?idsite={$this->parameters[self::INDEX]['siteId']}&rec=1" style="border:0;" alt="" /></p></noscript>
         <!-- End Matomo (noscript) -->
 MATOMO;
         } else {

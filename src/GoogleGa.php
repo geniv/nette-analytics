@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Analytics;
 
@@ -11,16 +11,8 @@ namespace Analytics;
  */
 class GoogleGa extends Analytics
 {
-
-    /**
-     * GoogleGa constructor.
-     *
-     * @param array $parameters
-     */
-    public function __construct(array $parameters)
-    {
-        parent::__construct($parameters);
-    }
+    const
+        INDEX = 'ga';
 
 
     /**
@@ -28,13 +20,13 @@ class GoogleGa extends Analytics
      */
     public function render()
     {
-        if (isset($this->parameters['ga']) && $this->parameters['productionMode']) {
+        if (isset($this->parameters[self::INDEX]) && $this->parameters['productionMode']) {
             if (isset($this->parameters['async']) && $this->parameters['async']) {
                 echo <<<GA
         <!-- Google Analytics -->
         <script>
         window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-        ga('create', '{$this->parameters['ga']}', 'auto');
+        ga('create', '{$this->parameters[self::INDEX]}', 'auto');
         ga('send', 'pageview');
         </script>
         <script async src='https://www.google-analytics.com/analytics.js'></script>
@@ -49,7 +41,7 @@ GA;
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
         
-        ga('create', '{$this->parameters['ga']}', 'auto');
+        ga('create', '{$this->parameters[self::INDEX]}', 'auto');
         ga('send', 'pageview');
         </script>
         <!-- End Google Analytics -->
