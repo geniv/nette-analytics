@@ -48,7 +48,7 @@ GA;
 GA;
             }
         } else {
-            echo '<!-- Google Analytics -->';
+            echo '<!-- Google Analytics -->' . PHP_EOL;
         }
     }
 }

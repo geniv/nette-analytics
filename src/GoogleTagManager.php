@@ -31,7 +31,7 @@ class GoogleTagManager extends Analytics
         <!-- End Google Tag Manager -->
 GTM;
         } else {
-            echo '<!-- Google Tag Manager head -->';
+            echo '<!-- Google Tag Manager head -->' . PHP_EOL;
         }
     }
 
@@ -48,7 +48,7 @@ GTM;
         <!-- End Google Tag Manager (noscript) -->
 GTM;
         } else {
-            echo '<!-- Google Tag Manager body -->';
+            echo '<!-- Google Tag Manager body -->' . PHP_EOL;
         }
     }
 }
