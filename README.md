@@ -19,21 +19,21 @@ require:
 
 Analytics driver:
 -----------------
-- GA: https://developers.google.com/analytics/
-    - https://analytics.google.com
-- GTM: https://developers.google.com/tag-manager/ 
-    - https://tagmanager.google.com
-- Matomo: https://developer.matomo.org/guides/tracking-javascript-guide
-    - https://matomo.org/
+- GA: https://analytics.google.com
+    - https://developers.google.com/analytics/
+- GTM: https://tagmanager.google.com
+    - https://developers.google.com/tag-manager/
+- Matomo: https://matomo.org/
+    - https://developer.matomo.org/guides/tracking-javascript-guide
 
 Include in application
 ----------------------
 neon configure:
 ```neon
-# google analytics
+# analytics
 analytics:
 #   productionMode: true
-#   async: true     # olny for: GA
+#   async: true     # only for: GA
     ga: 'UA-XXXXX-Y'
 #   ga:
 #       cs: 'UA-XXXXX-Y'
