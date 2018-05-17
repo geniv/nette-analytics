@@ -59,19 +59,19 @@ base presenters:
 ```php
 protected function createComponentGa(GoogleGa $googleGa)
 {
-    //return $googleGa->setLocaleCode($this->locale);
+    //$googleGa->setLocaleCode($this->locale);
     return $googleGa;
 }
 
 protected function createComponentGtm(GoogleTagManager $googleTagManager)
 {
-    //return $googleTagManager->setLocaleCode($this->locale);
+    //$googleTagManager->setLocaleCode($this->locale);
     return $googleTagManager;
 }
 
 protected function createComponentMatomo(Matomo $matomo)
 {
-    //return $matomo->setLocaleCode($this->locale);
+    //$matomo->setLocaleCode($this->locale);
     return $matomo;
 }
 ```
