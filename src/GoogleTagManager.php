@@ -9,7 +9,7 @@ namespace Analytics;
  * @author  geniv
  * @package Analytics
  */
-class GoogleTagManager extends GoogleAnalytics
+class GoogleTagManager extends Analytics
 {
 
     /**
@@ -24,7 +24,7 @@ class GoogleTagManager extends GoogleAnalytics
 
 
     /**
-     * Main render.
+     * Render.
      */
     public function render()
     {
@@ -38,7 +38,6 @@ class GoogleTagManager extends GoogleAnalytics
         })(window,document,'script','dataLayer','{$this->parameters['gtm']}');</script>
         <!-- End Google Tag Manager -->
 GTM;
-
         } else {
             echo '<!-- Google Tag Manager head -->';
         }
@@ -46,7 +45,7 @@ GTM;
 
 
     /**
-     * Body render.
+     * Render body.
      */
     public function renderBody()
     {
@@ -57,9 +56,8 @@ GTM;
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
 GTM;
-
         } else {
-            echo '<!-- Google Tag Manager head -->';
+            echo '<!-- Google Tag Manager body -->';
         }
     }
 }

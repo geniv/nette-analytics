@@ -9,7 +9,7 @@ namespace Analytics;
  * @author  geniv
  * @package Analytics
  */
-class GoogleGa extends GoogleAnalytics
+class GoogleGa extends Analytics
 {
 
     /**
@@ -24,7 +24,7 @@ class GoogleGa extends GoogleAnalytics
 
 
     /**
-     * Default render.
+     * Render.
      */
     public function render()
     {

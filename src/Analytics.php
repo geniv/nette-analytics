@@ -6,18 +6,18 @@ use Nette\Application\UI\Control;
 
 
 /**
- * Class GoogleAnalytics
+ * Class Analytics
  *
  * @author  geniv
  * @package Analytics
  */
-abstract class GoogleAnalytics extends Control
+abstract class Analytics extends Control
 {
     protected $parameters;
 
 
     /**
-     * GoogleAnalytics constructor.
+     * Analytics constructor.
      *
      * @param array $parameters
      */
