@@ -11,7 +11,7 @@ use GeneralForm\ITemplatePath;
  * @author  geniv
  * @package Analytics
  */
-interface IMatomo extends ITemplatePath
+interface IMatomo extends IAnalytics, ITemplatePath
 {
 
     /**

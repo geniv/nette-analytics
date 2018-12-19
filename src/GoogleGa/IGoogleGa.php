@@ -11,7 +11,7 @@ use GeneralForm\ITemplatePath;
  * @author  geniv
  * @package Analytics
  */
-interface IGoogleGa extends ITemplatePath
+interface IGoogleGa extends IAnalytics, ITemplatePath
 {
 
 }

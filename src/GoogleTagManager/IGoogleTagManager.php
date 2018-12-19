@@ -11,7 +11,7 @@ use GeneralForm\ITemplatePath;
  * @author  geniv
  * @package Analytics
  */
-interface IGoogleTagManager extends ITemplatePath
+interface IGoogleTagManager extends IAnalytics, ITemplatePath
 {
 
     /**
