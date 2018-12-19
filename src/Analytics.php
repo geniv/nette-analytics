@@ -11,7 +11,7 @@ use Nette\Application\UI\Control;
  * @author  geniv
  * @package Analytics
  */
-abstract class Analytics extends Control implements IAnalytics
+abstract class Analytics extends Control
 {
     /** @var array */
     protected $parameters;
