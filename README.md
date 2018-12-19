@@ -8,13 +8,14 @@ $ composer require geniv/nette-analytics
 ```
 or
 ```json
-"geniv/nette-analytics": ">=1.0.0"
+"geniv/nette-analytics": "^1.0"
 ```
 
 require:
 ```json
-"php": ">=7.0.0",
-"nette/nette": ">=2.4.0"
+"php": ">=7.0",
+"nette/nette": ">=2.4",
+"geniv/nette-general-form": ">=1.0"
 ```
 
 Analytics driver:
@@ -33,7 +34,6 @@ neon configure:
 # analytics
 analytics:
 #   productionMode: true
-#   async: true     # only for: GA
     ga: 'UA-XXXXX-Y'
 #   ga:
 #       cs: 'UA-XXXXX-Y'
@@ -57,21 +57,24 @@ extensions:
 
 base presenters:
 ```php
-protected function createComponentGa(GoogleGa $googleGa)
+protected function createComponentGa(IGoogleGa $googleGa): IGoogleGa
 {
     //$googleGa->setLocaleCode($this->locale);
+    //$googleGa->setTemplatePath(__DIR__ . '/templates/googleGa.latte');
     return $googleGa;
 }
 
-protected function createComponentGtm(GoogleTagManager $googleTagManager)
+protected function createComponentGtm(IGoogleTagManager $googleTagManager): IGoogleTagManager
 {
     //$googleTagManager->setLocaleCode($this->locale);
+    //$googleTagManager->setTemplatePath(__DIR__ . '/templates/googleTagManager.latte');
     return $googleTagManager;
 }
 
-protected function createComponentMatomo(Matomo $matomo)
+protected function createComponentMatomo(IMatomo $matomo): IMatomo
 {
     //$matomo->setLocaleCode($this->locale);
+    //$matomo->setTemplatePath(__DIR__ . '/templates/matomo.latte');
     return $matomo;
 }
 ```
