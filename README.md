@@ -34,7 +34,6 @@ neon configure:
 # analytics
 analytics:
 #   productionMode: true
-#   async: true     # only for: GA
     ga: 'UA-XXXXX-Y'
 #   ga:
 #       cs: 'UA-XXXXX-Y'
