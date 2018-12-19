@@ -26,12 +26,10 @@ class GoogleTagManager extends Analytics implements IGoogleTagManager
     {
         parent::__construct($parameters);
 
-        $this->templatePath = __DIR__ . '/BrowserSync.latte'; // set path
-
         // implicit path
         $this->templatePath = [
             'render' => __DIR__ . '/GoogleTagManager.latte',
-            'body'   => __DIR__ . 'GoogleTagManagerBody.latte',
+            'body'   => __DIR__ . '/GoogleTagManagerBody.latte',
         ];
     }
 
@@ -64,15 +62,12 @@ class GoogleTagManager extends Analytics implements IGoogleTagManager
     public function render()
     {
         if (isset($this->parameters[self::INDEX]) && $this->parameters['productionMode']) {
-            echo <<<GTM
-        <!-- Google Tag Manager -->
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','{$this->parameters[self::INDEX]}');</script>
-        <!-- End Google Tag Manager -->
-GTM;
+            $template = $this->getTemplate();
+
+            $template->gtm = $this->parameters[self::INDEX];
+
+            $template->setFile($this->templatePath['render']);
+            $template->render();
         } else {
             echo '<!-- Google Tag Manager head -->' . PHP_EOL;
         }
@@ -85,11 +80,12 @@ GTM;
     public function renderBody()
     {
         if (isset($this->parameters[self::INDEX]) && $this->parameters['productionMode']) {
-            echo <<<GTM
-        <!-- Google Tag Manager (noscript) -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={$this->parameters[self::INDEX]}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->
-GTM;
+            $template = $this->getTemplate();
+
+            $template->gtm = $this->parameters[self::INDEX];
+
+            $template->setFile($this->templatePath['body']);
+            $template->render();
         } else {
             echo '<!-- Google Tag Manager body -->' . PHP_EOL;
         }

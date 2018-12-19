@@ -61,33 +61,14 @@ class Matomo extends Analytics implements IMatomo
      */
     public function render()
     {
-        $template = $this->getTemplate();
-
-        $template->name = $name;
-        $template->class = $class;
-
-        $template->setTranslator($this->translator);
-        $template->setFile($this->templatePath['begin']);
-        $template->render();
-
-
         if (isset($this->parameters[self::INDEX]) && $this->parameters['productionMode']) {
-            echo <<<MATOMO
-        <!-- Matomo -->
-        <script type="text/javascript">
-          var _paq = _paq || [];
-          _paq.push(['trackPageView']);
-          _paq.push(['enableLinkTracking']);
-          (function() {
-            var u="//{$this->parameters[self::INDEX]['url']}/";
-            _paq.push(['setTrackerUrl', u+'piwik.php']);
-            _paq.push(['setSiteId', '{$this->parameters[self::INDEX]['siteId']}']);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-          })();
-        </script>
-        <!-- End Matomo -->
-MATOMO;
+            $template = $this->getTemplate();
+
+            $template->siteId = $this->parameters[self::INDEX]['siteId'];
+            $template->url = $this->parameters[self::INDEX]['url'];
+
+            $template->setFile($this->templatePath['render']);
+            $template->render();
         } else {
             echo '<!-- Matomo head -->' . PHP_EOL;
         }
@@ -100,11 +81,13 @@ MATOMO;
     public function renderBody()
     {
         if (isset($this->parameters[self::INDEX]) && $this->parameters['productionMode']) {
-            echo <<<MATOMO
-        <!-- Matomo (noscript) -->
-        <noscript><p><img src="//{$this->parameters[self::INDEX]['url']}/piwik.php?idsite={$this->parameters[self::INDEX]['siteId']}&rec=1" style="border:0;" alt="" /></p></noscript>
-        <!-- End Matomo (noscript) -->
-MATOMO;
+            $template = $this->getTemplate();
+
+            $template->siteId = $this->parameters[self::INDEX]['siteId'];
+            $template->url = $this->parameters[self::INDEX]['url'];
+
+            $template->setFile($this->templatePath['body']);
+            $template->render();
         } else {
             echo '<!-- Matomo body -->' . PHP_EOL;
         }
