@@ -2,6 +2,7 @@
 
 namespace Analytics;
 
+use GeneralForm\ITemplatePath;
 use Nette\Application\UI\Control;
 
 
@@ -11,7 +12,7 @@ use Nette\Application\UI\Control;
  * @author  geniv
  * @package Analytics
  */
-abstract class Analytics extends Control
+abstract class Analytics extends Control implements ITemplatePath
 {
     /** @var array */
     protected $parameters;

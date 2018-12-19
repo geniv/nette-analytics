@@ -8,13 +8,14 @@ $ composer require geniv/nette-analytics
 ```
 or
 ```json
-"geniv/nette-analytics": ">=1.0.0"
+"geniv/nette-analytics": "^1.0"
 ```
 
 require:
 ```json
-"php": ">=7.0.0",
-"nette/nette": ">=2.4.0"
+"php": ">=7.0",
+"nette/nette": ">=2.4",
+"geniv/nette-general-form": ">=1.0"
 ```
 
 Analytics driver:
