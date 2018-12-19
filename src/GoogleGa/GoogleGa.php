@@ -2,14 +2,13 @@
 
 namespace Analytics;
 
-
 /**
  * Class GoogleGa
  *
  * @author  geniv
  * @package Analytics
  */
-class GoogleGa extends Analytics
+class GoogleGa extends Analytics implements IGoogleGa
 {
     const
         INDEX = 'ga';

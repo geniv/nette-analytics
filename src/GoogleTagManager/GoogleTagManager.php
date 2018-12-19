@@ -2,17 +2,60 @@
 
 namespace Analytics;
 
-
 /**
  * Class GoogleTagManager
  *
  * @author  geniv
  * @package Analytics
  */
-class GoogleTagManager extends Analytics
+class GoogleTagManager extends Analytics implements IGoogleTagManager
 {
     const
         INDEX = 'gtm';
+
+    /** @var array */
+    private $templatePath;
+
+
+    /**
+     * GoogleTagManager constructor.
+     *
+     * @param array $parameters
+     */
+    public function __construct(array $parameters)
+    {
+        parent::__construct($parameters);
+
+        $this->templatePath = __DIR__ . '/BrowserSync.latte'; // set path
+
+        // implicit path
+        $this->templatePath = [
+            'render' => __DIR__ . '/GoogleTagManager.latte',
+            'body'   => __DIR__ . 'GoogleTagManagerBody.latte',
+        ];
+    }
+
+
+    /**
+     * Set template path.
+     *
+     * @param string $path
+     */
+    public function setTemplatePath(string $path)
+    {
+        $this->templatePath['render'] = $path;
+    }
+
+
+    /**
+     * Set template path.
+     *
+     * @param string $path
+     */
+    public function setTemplatePathBody(string $path)
+    {
+        $this->templatePath['body'] = $path;
+    }
 
 
     /**

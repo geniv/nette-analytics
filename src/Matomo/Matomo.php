@@ -2,17 +2,58 @@
 
 namespace Analytics;
 
-
 /**
  * Class Matomo
  *
  * @author  geniv
  * @package Analytics
  */
-class Matomo extends Analytics
+class Matomo extends Analytics implements IMatomo
 {
     const
         INDEX = 'matomo';
+
+    /** @var array */
+    private $templatePath;
+
+
+    /**
+     * Matomo constructor.
+     *
+     * @param array $parameters
+     */
+    public function __construct(array $parameters)
+    {
+        parent::__construct($parameters);
+
+        // implicit path
+        $this->templatePath = [
+            'render' => __DIR__ . '/Matomo.latte',
+            'body'   => __DIR__ . '/MatomoBody.latte',
+        ];
+    }
+
+
+    /**
+     * Set template path.
+     *
+     * @param string $path
+     */
+    public function setTemplatePath(string $path)
+    {
+        $this->templatePath['render'] = $path;
+    }
+
+
+    /**
+     * Set template path.
+     *
+     * @param string $path
+     */
+    public function setTemplatePathBody(string $path)
+    {
+        $this->templatePath['body'] = $path;
+    }
 
 
     /**
@@ -20,6 +61,16 @@ class Matomo extends Analytics
      */
     public function render()
     {
+        $template = $this->getTemplate();
+
+        $template->name = $name;
+        $template->class = $class;
+
+        $template->setTranslator($this->translator);
+        $template->setFile($this->templatePath['begin']);
+        $template->render();
+
+
         if (isset($this->parameters[self::INDEX]) && $this->parameters['productionMode']) {
             echo <<<MATOMO
         <!-- Matomo -->

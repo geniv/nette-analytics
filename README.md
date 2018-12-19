@@ -57,21 +57,24 @@ extensions:
 
 base presenters:
 ```php
-protected function createComponentGa(GoogleGa $googleGa)
+protected function createComponentGa(IGoogleGa $googleGa): IGoogleGa
 {
     //$googleGa->setLocaleCode($this->locale);
+    //$googleGa->setTemplatePath(__DIR__ . '/templates/googleGa.latte');
     return $googleGa;
 }
 
-protected function createComponentGtm(GoogleTagManager $googleTagManager)
+protected function createComponentGtm(IGoogleTagManager $googleTagManager): IGoogleTagManager
 {
     //$googleTagManager->setLocaleCode($this->locale);
+    //$googleTagManager->setTemplatePath(__DIR__ . '/templates/googleTagManager.latte');
     return $googleTagManager;
 }
 
-protected function createComponentMatomo(Matomo $matomo)
+protected function createComponentMatomo(IMatomo $matomo): IMatomo
 {
     //$matomo->setLocaleCode($this->locale);
+    //$matomo->setTemplatePath(__DIR__ . '/templates/matomo.latte');
     return $matomo;
 }
 ```
