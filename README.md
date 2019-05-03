@@ -68,6 +68,7 @@ protected function createComponentGtm(IGoogleTagManager $googleTagManager): IGoo
 {
     //$googleTagManager->setLocaleCode($this->locale);
     //$googleTagManager->setTemplatePath(__DIR__ . '/templates/googleTagManager.latte');
+    //$googleTagManager->setTemplatePathBody(__DIR__ . '/templates/googleTagManagerBody.latte');
     return $googleTagManager;
 }
 
@@ -75,6 +76,7 @@ protected function createComponentMatomo(IMatomo $matomo): IMatomo
 {
     //$matomo->setLocaleCode($this->locale);
     //$matomo->setTemplatePath(__DIR__ . '/templates/matomo.latte');
+    //$matomo->setTemplatePathBody(__DIR__ . '/templates/matomoBody.latte');
     return $matomo;
 }
 ```
